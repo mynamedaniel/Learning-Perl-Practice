@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+use strict;
+use diagnostics;
+use 5.010;
+
+say "Please enter some stings in different lines";
+chomp(my @inputs = sort <STDIN>);
+print @inputs;
+print "\n";
+for (@inputs) {
+print "$_\n";
+}

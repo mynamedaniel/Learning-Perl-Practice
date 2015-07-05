@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+use strict;
+use 5.010;
+use diagnostics;
+
+my @names = qw/ fred betty barney dino wilma pebbles bamm-bamm /;
+say "Please enter the keys of names you want to display";
+chomp(my @inputs = <STDIN>);
+foreach (@inputs) {
+	say "$_ => $names[$_ - 1]";
+}
