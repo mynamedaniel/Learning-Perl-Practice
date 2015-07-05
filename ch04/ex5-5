@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+use strict;
+use diagnostics;
+use 5.010;
+
+greet ("Fred");
+greet ("Barney");
+greet ("Wilma");
+greet ("Betty");
+
+sub greet {
+	state @names;
+	if (!@names) {
+		say "Hi $_[0], You are the first one here!";
+	}
+	else {
+		say "Hi $_[0], I've seen: @names";
+	}
+	push(@names, $_[0]);
+}

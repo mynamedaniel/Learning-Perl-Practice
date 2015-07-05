@@ -1,0 +1,15 @@
+#!/usr/bin/perl -w
+use strict;
+use diagnostics;
+use 5.010;
+
+my $fred_total = total(1..1000);
+print "The total of \@fred is $fred_total.\n";
+
+sub total {
+	my $sum = 0;
+	for my $number (@_) {
+		$sum += $number;
+	}
+	$sum;
+}

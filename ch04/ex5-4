@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+use strict;
+use diagnostics;
+use 5.010;
+
+greet ("Fred");
+greet ("Barney");
+
+sub greet {
+	state $last;
+	if (!defined $last) {
+		say "Hi $_[0], You are the first one here!";
+	}
+	else {
+		say "Hi $_[0], $last is also here!";
+	}
+	$last = $_[0];
+}
