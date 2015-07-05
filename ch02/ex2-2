@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+use strict;
+use 5.010;
+
+{
+print "Please enter the raidus: ";
+chomp(my $radius = <STDIN>);
+my $pie = 3.141592654;
+my $perimeter = 2 * $pie * $radius;
+say "The perimeter of a circle with radius $radius is $perimeter.";
+}
