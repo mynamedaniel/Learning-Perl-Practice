@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use diagnostics;
+use 5.010;
+
+say "Please enter the alignment";
+chomp(my $right = <STDIN>);
+my $number = ($right / 10) + 1;
+say "Please enter some strings in seperate line and use Crtl + D to end";
+chomp(my @contents = <STDIN>);
+say (1234567890 x $number);
+for (@contents) {
+	printf "%20s\n", $_;
+}
