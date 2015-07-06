@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my $length = 0;
+for (sort keys %ENV) {
+	$length = length($_) if (length($_) > $length);
+}
+
+for my $item (sort keys %ENV) {
+	printf "%-${length}s => %s\n", $item, $ENV{$item}; 
+}

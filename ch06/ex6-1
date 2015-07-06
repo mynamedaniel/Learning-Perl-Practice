@@ -1,0 +1,14 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my %names =  (
+	fred => 'flintstone',
+	barney => 'rubble',
+	wilma => 'flintstone',
+);
+say "Please enter the last name want to search";
+chomp(my $last_name = <STDIN>);
+say "$names{$last_name}";

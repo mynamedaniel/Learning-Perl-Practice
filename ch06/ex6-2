@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+say "Please enter some strings in seperate lines and end via Ctrl-D";
+my %counts;
+while(<STDIN>) {
+	$counts{$_} += 1;
+}
+for my $names (sort keys %counts) {
+	say "$names => $counts{$names}";
+}
