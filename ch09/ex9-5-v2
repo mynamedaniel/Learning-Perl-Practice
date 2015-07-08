@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+## Copyright (C) 2015 by Daniel Z
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+for my $file (@ARGV) {
+	open INPUT, '<', $file;
+	my $output = $file . ".out";
+	open OUTPUT, '>', $output;
+	while (<INPUT>) {
+		print OUTPUT $_;
+	}
+	close INPUT;
+	close OUTPUT;
+	open INPUT, '<', $output;
+	open OUTPUT, '>', $file;
+	while(<INPUT>) {
+		if (/\A##/) {
+			say "$file done";
+		} else {
+			s/(perl\Z\n)/$1## Copyright (C) 2015 by Daniel Z\n/i;
+			print OUTPUT $_;
+			last;
+		}
+	}
+	close INPUT;
+	close OUTPUT;
+}
