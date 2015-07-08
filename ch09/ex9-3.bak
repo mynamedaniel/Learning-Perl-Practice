@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my $in = $ARGV[0];
+
+if (! defined $in) {
+	die "No file provided";
+}
+
+my $out = $in . ".out";
+
+if (! open INPUT, '<', $in) {
+	die "Can\'t open $in: $!";
+}
+
+if (! open OUTPUT, '>>', $out) {
+	die "Can\'t write to $out: $!";
+}
+
+while(<INPUT>) {
+	s/Fred/niubility/gi;
+	s/Wilma/Fred/gi;
+	s/niubility/Wilma/gi;
+	print OUTPUT $_;
+}

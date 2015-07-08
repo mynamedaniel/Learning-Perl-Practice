@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+## Copyright (C) 2015 by Daniel XU
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my %todo; 
+for (@ARGV) {
+	$todo{$_} = 1;
+}
+
+while (<>) {
+	if (/\A##/) {
+		delete $todo{$ARGV};
+	}
+}
+
+@ARGV = sort keys %todo;
+$^I = '.bak';
+while(<>) {
+	if (/\A#!/) {
+		$_ .= "##Copyright (C) 2015 by Daniel XU\n";
+	}
+	print;
+}

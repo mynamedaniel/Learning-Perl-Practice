@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+## Copyright (C) 2015 by Daniel XUo
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+{
+	my $what = "ab";
+	while(<>) {
+		chomp;
+		if(/(($what){3})/) {
+			say "Matched: <$1>";
+		} else {
+			say "No match";
+		}
+	}
+}
