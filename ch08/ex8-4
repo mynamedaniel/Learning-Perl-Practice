@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+while(<>) {
+	chomp;
+	if (/(?<word>\w+a$)/) {
+		say "'word' contains '$+{word}'";
+	} else {
+		say "No match: |$_|";
+	}
+}

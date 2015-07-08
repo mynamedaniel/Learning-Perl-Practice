@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+while(<>) {
+	chomp;
+	if (/match/) {
+		say "Matched: |$`<$&>$'|";
+	} else {
+		say "No match: |$_|";
+	}
+}
