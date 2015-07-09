@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+{
+$ENV{ZERO} = 0;
+$ENV{empty} = '';
+$ENV{uuu} = undef;
+	my $value;
+	for my $current (sort keys %ENV) {
+		$value = $ENV{$current} // 'N/A';
+		say "$current => $value";
+	}
+}

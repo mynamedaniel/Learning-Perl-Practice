@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+{
+my $bingo = int(1 +rand(100));
+	while(1) {
+		say "Enter your guess";
+		chomp(my $guess = <STDIN>);
+		if ($guess =~ /\A(quit|exit|\s+|\D+)\z/i){
+			last;	
+		}
+		elsif ($guess == $bingo) {
+			say "Bingo!";
+			last;
+		}
+		elsif ($guess > $bingo) {
+			say "Too high";
+			next;
+		}
+		else {
+			say "Too low";
+			next;
+		} 
+	}
+}
