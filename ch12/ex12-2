@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+die "No input" unless @ARGV;
+my $oldest_name = shift @ARGV;
+my $oldest_age = -M $oldest_name;
+
+for (@ARGV) {
+	my $age = -M;
+	($oldest_name, $oldest_age) = ($_, $age) if ($age > $oldest_age);
+}
+$oldest_age =  int $oldest_age;
+say "The olderst file is $oldest_name and was created at $oldest_age days ago.";

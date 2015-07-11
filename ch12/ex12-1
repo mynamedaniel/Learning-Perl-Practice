@@ -1,0 +1,40 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+file_test(@ARGV);
+
+sub file_test {
+for my $file (@_) {
+	if (-e $file) {
+		if (-w -r -x $file) {
+			say "$file => 7";
+		} 
+		elsif (-w -r $file) {
+			say "$file => 6";
+		}
+		elsif (-w -x $file) {
+			say "$file => 3"; 
+		} 
+		elsif (-r -x $file) {
+			say "$file => 5";
+		}
+		elsif (-w $file) {
+			say "$file => 2";
+		}	
+		elsif (-r $file) {
+			say "$file => 4";
+		}
+		elsif (-x $file) {
+			say "$file => 1";
+		}
+		else {
+			say "$file => 0";
+		}
+	} else {
+		say "File $file  is not existing.";
+	}
+}
+}
