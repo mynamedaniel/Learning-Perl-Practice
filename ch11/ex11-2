@@ -1,0 +1,23 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+use DateTime;
+
+	my @t = localtime;
+	my $current = DateTime->new(
+		year => $t[5] + 1900,
+		month => $t[4] + 1,
+		day => $t[3],
+	);
+	
+	my $input = DateTime->new(
+		year => $ARGV[0],
+		month => $ARGV[1],
+		day => $ARGV[2],
+	);
+
+	my $duration = $current - $input;
+	my @units = $duration->in_units( qw(years months days) );
+	printf "%d years, %d months and %d days\n", @units;
