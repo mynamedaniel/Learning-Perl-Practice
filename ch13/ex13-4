@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+chomp(@ARGV);
+for my $file(@ARGV) {
+	if ($file =~ /\*+/) {
+		unlink glob $file or die "Can not remove files in pattern $file: $!";
+	} else {
+		unlink $file or die "Can not remove $file: $!"; 
+	}
+}

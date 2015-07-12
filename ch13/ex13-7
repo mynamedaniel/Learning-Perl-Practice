@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+chomp(@ARGV);
+my $old;
+my $new;
+if ($ARGV[0] eq '-s') {
+	$old = $ARGV[1];
+	$new = $ARGV[2];
+	if (defined $old && defined $new) {
+		symlink $old, $new 
+			or die "Can not create soft link $new for  $old: $!";
+	} else {
+		die "Missing argument";
+	}
+} else {
+	$old = $ARGV[0];
+	$new = $ARGV[1];
+	if (defined $old && defined $new) {
+		link $old, $new 
+			or die "Can not linkl $old to $new: $!";
+	} else {
+		die "Missing argument";
+	}
+}

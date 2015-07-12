@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+chomp(@ARGV);
+my $old = $ARGV[0];
+my $new = $ARGV[1];
+if (defined $old && defined $new) {
+	link $old, $new 
+		or die "Can not linkl $old to $new: $!";
+} else {
+	die "Missing argument";
+}

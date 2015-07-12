@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+say "Please enter a dir you want to open";
+chomp(my $dir = <STDIN>);
+if ($dir =~ /\A\s*\z/) {
+	chdir or die "Can not change to home dir: $!";
+} else {
+	chdir $dir or die "Can not change to $dir: $!";
+}
+my @content = sort(<* .*>);
+for (@content) {
+	say;
+}

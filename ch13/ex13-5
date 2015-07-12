@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+chomp(@ARGV);
+my $old = $ARGV[0];
+my $new = $ARGV[1];
+if (-d $new) {
+	$new .= "/$old";
+}
+	
+if (-e $new) {
+	say "$new is existing in current folder, do you want to overwrite it? (Y/N)";
+	chomp(my $choice = <STDIN>);
+	if ($choice =~ /\A[y|yes]\z/i) {
+		say "confirmed";
+	}
+	else {
+		die "Invalid choice";
+	}
+} 
+
+rename $old, $new or die "Can not rename $old to $new: $!"; 
