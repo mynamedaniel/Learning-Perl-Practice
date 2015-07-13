@@ -1,0 +1,19 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my %last_name = qw {
+	fred flintstone Wilma Flintstone Barney Rubble
+	betty rubble Bamm-Bamm Rubble PEBBLES FLINTSTONE
+};
+
+for (sort by_firstname_lastname keys %last_name) {
+	say "$_ $last_name{$_}";
+};
+
+sub by_firstname_lastname {
+	"\L$last_name{$a}" cmp "\L$last_name{$b}"
+	or "\L$a" cmp "\L$b"
+};

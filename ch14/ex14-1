@@ -1,0 +1,11 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+chomp(@ARGV);
+my @sort = sort {$a <=> $b} @ARGV;
+for (@sort) {
+	printf "%10d\n", $_;
+}

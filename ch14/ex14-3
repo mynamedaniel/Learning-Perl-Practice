@@ -1,0 +1,15 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+say "Please enter the string";
+chomp(my $string = <STDIN>);
+say "Please enter the substring";
+chomp(my $substring = <STDIN>);
+my $ini = 0;
+while (index($string, $substring, $ini) != -1) {
+	$ini = index($string, $substring, $ini);
+	say $ini++;
+}
