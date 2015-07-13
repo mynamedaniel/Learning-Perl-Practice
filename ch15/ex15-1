@@ -1,0 +1,30 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+my $secret =  int(1 + rand(100));
+while (1) {
+	say "Please enter a number";
+	chomp($_ = <STDIN>);
+	given ( $_ ) {
+		when (/[exit|quiti]/i || /\A\s+\z/ ) {
+			say "Quit"; last;
+		}
+		when ( /\D+/ ) {
+			say "InvalidInput"; last;
+		}
+		when ( $_ == $secret ) {
+			say "Bingo"; last;
+		}
+		when ( $_ > $secret ) {
+			say "Too Hign"; next;
+		}
+		when ( $_ < $secret ) {
+			say "Too low"; next;
+		}
+		default {
+			say "Invalid input"; last;
+		}
+	}
+}

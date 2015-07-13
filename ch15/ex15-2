@@ -1,0 +1,24 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+say "Please enter an integer";
+chomp(my $number = <STDIN>);
+given ( $number ) {
+	when ($_ ~~ /\D+/) {
+		say "Invalid input: please enter an integer";
+	}
+	when (($_ % 3) == 0) {
+		print"FiZZ "; continue;
+	}
+	when (($_ % 5) == 0) {
+		print "Bin "; continue;
+	}
+	when (($_ % 7) == 0) {
+		print "Sausage "; continue;
+	}
+	default {
+		say "";
+	}
+}

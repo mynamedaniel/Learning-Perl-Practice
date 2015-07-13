@@ -1,0 +1,35 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+say "Please enter an integer";
+chomp(my $input = <STDIN>);
+die "Invalid input" if ($input =~ /\D+/);
+my @result = divisors($input);
+my @empty = ();
+
+given (@result) {
+	when ( @result ~~ @empty ) {
+		say "$input is a prime"; continue;
+	}
+	when ( !(@result ~~ @empty) ) {
+		say "The divisors are @result"; continue;
+	}
+	when (@result ~~ /2/ ) {	
+		say "$input is an even" 
+	}
+	when (!(@result ~~ /2/)) {
+		say "$input is an odd";
+	}
+}	
+
+sub divisors {
+	my $number = shift;
+
+	my @divisors = ();
+	foreach my $divisor (2 .. ( $number/2 )) {
+		push @divisors, $divisor unless $number % $divisor;
+	}
+	return @divisors;
+}

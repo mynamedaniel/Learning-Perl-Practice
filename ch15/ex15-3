@@ -1,0 +1,22 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+for ($ARGV[0]) {
+	when (!(-r || -w || -x)) {
+		say "$_ is not readable, writable or executable"
+	}
+	when (-r) {
+		say "$_ is readable"; continue;
+	}
+	when (-w) {
+		say "$_ is writable"; continue;
+	}
+	when (-x) {
+		say "$_ is executable"
+	}
+	default {
+		say "N/A";
+	}
+}
