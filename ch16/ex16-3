@@ -1,0 +1,15 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+chomp(my $day_of_week = substr (`date`, 0, 3));
+say $day_of_week;
+given ($day_of_week) {
+	when ( /\AS/i) {
+		say "go play"
+	}
+	default {
+		say "get to work"
+	}
+}

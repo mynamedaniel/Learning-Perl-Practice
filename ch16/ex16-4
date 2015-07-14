@@ -1,0 +1,14 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+my $usr1_count = 0;
+
+sub my_usr1 {state $n; say 'Caught USR1: ', ++$n}
+
+say "I am $$";
+
+$SIG{USR1} = "my_usr1";
+
+while(1) {sleep 1};

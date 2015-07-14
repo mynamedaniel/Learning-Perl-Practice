@@ -1,0 +1,9 @@
+#!/usr/bin/perl 
+use warnings;
+use diagnostics;
+use 5.010001;
+
+chdir '/Users/xuzh2010' 
+or die "Can't open directory /Users/xuzh2010: $!";
+
+system 'ls', '-ltr';
