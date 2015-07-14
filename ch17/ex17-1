@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my %counts;
+my $int = 0;
+my $dummy;
+say "Please enter a pattern to search";
+chomp(my $pattern = <STDIN>);
+eval {open ORIGIN, '<', 'sample_text'};
+while(<ORIGIN>) {
+	if (/$pattern/) {
+		$counts{$int++} = $_;
+	}
+}
+close ORIGIN;
+for (sort keys %counts) {
+	$dummy = $_ + 1;
+	print  "$dummy => $counts{$_}";
+}

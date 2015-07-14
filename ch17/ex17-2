@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my($file, $atime, $mtime);
+for (<*>, <.*>) {
+	($file, $atime, $mtime) = ($_, (stat $_)[8, 9]);
+	printf "%-20s %-20s %-20s\n", $file, $atime, $mtime;
+}

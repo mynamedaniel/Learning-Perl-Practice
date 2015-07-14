@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use warnings;
+use diagnostics;
+use strict;
+use 5.010;
+
+my($atime, $mtime);
+my($year, $month, $day);
+for (<*>, <.*>) {
+	($atime, $mtime) = map {
+	($year, $month, $day) = (localtime($_))[5,4,3];
+	$year += 1900;
+	$month++;
+	sprintf '%4d-%02d-%02d', $year, $month, $day;
+	} (stat $_)[8, 9];
+	printf "%-20s %-20s %-20s\n", $_, $atime, $mtime;
+}
